@@ -14,3 +14,5 @@
 
 # No owners - allows sub-maintainers to merge changes.
 CHANGELOG.md
+
+* @gh-netic-robot

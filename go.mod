@@ -388,7 +388,7 @@ exclude k8s.io/client-go v8.0.0+incompatible
 
 // Replace memberlist with our fork which includes some fixes that haven't been
 // merged upstream yet.
-replace github.com/hashicorp/memberlist => github.com/grafana/memberlist v0.3.1-0.20220714140823-09ffed8adbbe
+replace github.com/hashicorp/memberlist => github.com/grafana/memberlist d17264b4a464
 
 // Insist on the optimised version of grafana/regexp
 replace github.com/grafana/regexp => github.com/grafana/regexp v0.0.0-20240518133315-a468a5bfb3bc

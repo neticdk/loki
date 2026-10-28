@@ -1,6 +1,6 @@
 module github.com/grafana/loki/v3
 
-go 1.21.8
+go 1.25.0
 
 require (
 	cloud.google.com/go/bigtable v1.29.0
@@ -99,7 +99,7 @@ require (
 	golang.org/x/crypto v0.26.0
 	golang.org/x/net v0.28.0
 	golang.org/x/sync v0.8.0
-	golang.org/x/sys v0.24.0
+	golang.org/x/sys v0.44.0
 	golang.org/x/time v0.6.0
 	google.golang.org/api v0.193.0
 	google.golang.org/grpc v1.65.0

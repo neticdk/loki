@@ -1,12 +1,12 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package aggregate // import "go.opentelemetry.io/otel/sdk/metric/internal/aggregate"
+package aggregate
 
 import (
 	"sync"
 
-	"go.opentelemetry.io/otel/sdk/metric/internal/exemplar"
+	"go.opentelemetry.io/otel/sdk/metric/exemplar"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"
 )
 
@@ -17,6 +17,7 @@ var exemplarPool = sync.Pool{
 func collectExemplars[N int64 | float64](out *[]metricdata.Exemplar[N], f func(*[]exemplar.Exemplar)) {
 	dest := exemplarPool.Get().(*[]exemplar.Exemplar)
 	defer func() {
+		clear(*dest) // Erase elements to let GC collect objects.
 		*dest = (*dest)[:0]
 		exemplarPool.Put(dest)
 	}()

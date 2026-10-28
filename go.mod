@@ -1,6 +1,6 @@
 module github.com/grafana/loki/v3
 
-go 1.21.8
+go 1.23.0
 
 require (
 	cloud.google.com/go/bigtable v1.29.0
@@ -148,7 +148,7 @@ require (
 	go.opentelemetry.io/collector/pdata v1.12.0
 	go4.org/netipx v0.0.0-20230125063823-8449b0a6169f
 	golang.org/x/exp v0.0.0-20240325151524-a685a6edb6d8
-	golang.org/x/oauth2 v0.22.0
+	golang.org/x/oauth2 v0.27.0
 	golang.org/x/text v0.17.0
 	google.golang.org/protobuf v1.34.2
 	gotest.tools v2.2.0+incompatible

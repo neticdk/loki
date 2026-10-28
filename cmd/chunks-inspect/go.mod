@@ -1,8 +1,6 @@
 module github.com/grafana/loki/cmd/chunks-inspect
 
-go 1.22
-
-toolchain go1.22.6
+go 1.24
 
 require (
 	github.com/golang/snappy v0.0.4
@@ -68,7 +66,7 @@ require (
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/jpillora/backoff v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/klauspost/compress v1.17.9 // indirect
+	github.com/klauspost/compress v1.18.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/miekg/dns v1.1.61 // indirect

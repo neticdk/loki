@@ -271,7 +271,7 @@ func searchKeys(data []byte, keys ...string) int {
 				}
 
 				if level <= len(keys) {
-					if equalStr(&keyUnesc, keys[level-1]) {
+					if string(keyUnesc) == keys[level-1] {
 						lastMatched = true
 
 						// if key level match
@@ -452,7 +452,7 @@ func EachKey(data []byte, cb func(int, []byte, ValueType, error), paths ...[]str
 
 					pathsBuf[level-1] = bytesToString(&keyUnesc)
 					for pi, p := range paths {
-						if len(p) != level || pathFlags[pi] || !equalStr(&keyUnesc, p[level-1]) || !sameTree(p, pathsBuf[:level]) {
+						if len(p) != level || pathFlags[pi] || string(keyUnesc) != p[level-1] || !sameTree(p, pathsBuf[:level]) {
 							continue
 						}
 
@@ -512,10 +512,10 @@ func EachKey(data []byte, cb func(int, []byte, ValueType, error), paths ...[]str
 			}
 
 			for pi, p := range paths {
-				if len(p) < level+1 || pathFlags[pi] || p[level][0] != '[' || !sameTree(p, pathsBuf[:level]) {
+				if len(p) < level+1 || pathFlags[pi] || p[level] == "" || p[level][0] != '[' || !sameTree(p, pathsBuf[:level]) {
 					continue
 				}
-				if len(p[level]) >= 2 {
+				if len(p[level]) > 2 {
 					aIdx, _ := strconv.Atoi(p[level][1 : len(p[level])-1])
 					arrIdxFlags[aIdx] = x
 					pIdxFlags[pi] = true
@@ -620,7 +620,10 @@ var (
 )
 
 func createInsertComponent(keys []string, setValue []byte, comma, object bool) []byte {
-	isIndex := string(keys[0][0]) == "["
+	isIndex := false
+	if len(keys) > 0 && len(keys[0]) > 0 {
+		isIndex = string(keys[0][0]) == "["
+	}
 	offset := 0
 	lk := calcAllocateSpace(keys, setValue, comma, object)
 	buffer := make([]byte, lk, lk)
@@ -667,7 +670,10 @@ func createInsertComponent(keys []string, setValue []byte, comma, object bool) [
 }
 
 func calcAllocateSpace(keys []string, setValue []byte, comma, object bool) int {
-	isIndex := string(keys[0][0]) == "["
+	isIndex := false
+	if len(keys) > 0 && len(keys[0]) > 0 {
+		isIndex = string(keys[0][0]) == "["
+	}
 	lk := 0
 	if comma {
 		// ,
@@ -712,12 +718,10 @@ func WriteToBuffer(buffer []byte, str string) int {
 }
 
 /*
-
 Del - Receives existing data structure, path to delete.
 
 Returns:
 `data` - return modified data
-
 */
 func Delete(data []byte, keys ...string) []byte {
 	lk := len(keys)
@@ -798,13 +802,11 @@ func Delete(data []byte, keys ...string) []byte {
 }
 
 /*
-
 Set - Receives existing data structure, path to set, and data to set at that key.
 
 Returns:
 `value` - modified byte array
 `err` - On any parsing error
-
 */
 func Set(data []byte, setValue []byte, keys ...string) (value []byte, err error) {
 	// ensure keys are set

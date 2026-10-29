@@ -52,7 +52,7 @@ require (
 	github.com/grafana/dskit v0.0.0-20240925193654-7c41a4057319
 	github.com/grafana/go-gelf/v2 v2.0.1
 	github.com/grafana/gomemcache v0.0.0-20240229205252-cd6a66d6fb56
-	github.com/grafana/regexp v0.0.0-20240518133315-a468a5bfb3bc
+	github.com/grafana/regexp v0.0.0-20250905093917-f7b3be9d1853
 	github.com/grafana/tail v0.0.0-20230510142333-77b18831edf0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
@@ -391,7 +391,7 @@ exclude k8s.io/client-go v8.0.0+incompatible
 replace github.com/hashicorp/memberlist => github.com/grafana/memberlist v0.3.1-0.20220714140823-09ffed8adbbe
 
 // Insist on the optimised version of grafana/regexp
-replace github.com/grafana/regexp => github.com/grafana/regexp v0.0.0-20240518133315-a468a5bfb3bc
+replace github.com/grafana/regexp => github.com/grafana/regexp v0.0.0-20250905093917-f7b3be9d1853
 
 replace github.com/grafana/loki/pkg/push => ./pkg/push
 

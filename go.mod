@@ -355,7 +355,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.28.0
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.21.0 // indirect
-	golang.org/x/mod v0.19.0 // indirect
+	golang.org/x/mod v0.40.0 // indirect
 	golang.org/x/term v0.23.0 // indirect
 	golang.org/x/tools v0.23.0 // indirect
 	google.golang.org/genproto v0.0.0-20240820151423-278611b39280 // indirect
